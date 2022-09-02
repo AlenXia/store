@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-/** 处理商品数据的业务层实现类 */
+// 处理商品数据的业务层实现类
 @Service
 public class ProductServiceImpl implements IProductService {
     @Autowired

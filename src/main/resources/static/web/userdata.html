@@ -268,13 +268,13 @@
 <!--页脚结束-->
 <script type="text/javascript">
 
-    $("#btn-change-info").click(function() {
+    $("#btn-change-info").click(function () {
         $.ajax({
             url: "/users/change_info",
             type: "POST",
             data: $("#form-change-info").serialize(),
             dataType: "json",
-            success: function(json) {
+            success: function (json) {
                 if (json.state == 200) {
                     alert("修改成功！");
                     // 修改成功后重新加载当前界面
@@ -283,7 +283,7 @@
                     alert("修改失败！" + json.message);
                 }
             },
-            error: function(xhr) {
+            error: function (xhr) {
                 alert("用户信息修改时产生位置的异常" + xhr.status);
                 location.href = "login.html";
             }

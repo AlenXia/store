@@ -8,9 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-/**
- * 处理省/市/区数据的业务层实现类
- */
+// 处理省/市/区数据的业务层实现类
 @Service
 public class DistrictServiceImpl implements IDistrictService {
     @Autowired

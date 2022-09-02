@@ -3,6 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cy.store.mapper.UserMapper">
+
     <resultMap id="UserEntityMap" type="com.cy.store.entity.User">
         <id column="uid" property="uid"/>
         <result column="is_delete" property="isDelete"/>
@@ -13,48 +14,52 @@
     </resultMap>
 
     <!-- 插入用户数据：Integer insert(User user) -->
+    <!-- userGenerateKeys、keyProperty 可以让uid保持自增状态，无需再在代码中编写 -->
     <insert id="insert" useGeneratedKeys="true" keyProperty="uid">
-        INSERT INTO
-            t_user (username, password, salt, phone, email, gender, avatar, is_delete, created_user, created_time, modified_user, modified_time)
-        VALUES
-            (#{username}, #{password}, #{salt}, #{phone}, #{email}, #{gender}, #{avatar}, #{isDelete}, #{createdUser}, #{createdTime}, #{modifiedUser}, #{modifiedTime})
+                INSERT INTO
+                    t_user (username, password, salt, phone, email, gender, avatar, is_delete, created_user, created_time, modified_user, modified_time)
+                VALUES
+                    (#{username}, #{password}, #{salt}, #{phone}, #{email}, #{gender}, #{avatar}, #{isDelete}, #{createdUser}, #{createdTime}, #{modifiedUser}, #{modifiedTime})
+
     </insert>
 
     <!-- 根据用户名查询用户数据：User findByUsername(String username) -->
     <select id="findByUsername" resultMap="UserEntityMap">
-        SELECT
-            *
-        FROM
-            t_user
-        WHERE
-            username = #{username}
+                SELECT
+                    *
+                FROM
+                    t_user
+                WHERE
+                    username = #{username}
+
     </select>
 
     <!-- 根据uid更新用户的密码：
-	     Integer updatePasswordByUid(
-		    @Param("uid") Integer uid,
-		    @Param("password") String password,
-		    @Param("modifiedUser") String modifiedUser,
-		    @Param("modifiedTime") Date modifiedTime) -->
+	     Integer updatePasswordByUid(Integer uid,
+                                String password,
+                                String modifiedUser,
+                                Date modifiedTime); -->
     <update id="updatePasswordByUid">
-        UPDATE
-            t_user
-        SET
-            password = #{password},
-            modified_user = #{modifiedUser},
-            modified_time = #{modifiedTime}
-        WHERE
-            uid = #{uid}
+                UPDATE
+                    t_user
+                SET
+                    password = #{password},
+                    modified_user = #{modifiedUser},
+                    modified_time = #{modifiedTime}
+                WHERE
+                    uid = #{uid}
+
     </update>
 
     <!-- 根据用户id查询用户数据：User findByUid(Integer uid) -->
     <select id="findByUid" resultMap="UserEntityMap">
-        SELECT
-            *
-        FROM
-            t_user
-        WHERE
-            uid = #{uid}
+                SELECT
+                    *
+                FROM
+                    t_user
+                WHERE
+                    uid = #{uid}
+
     </select>
 
     <!-- 根据uid更新用户个人资料：Integer updateInfoByUid(User user) -->
@@ -62,9 +67,15 @@
         UPDATE
         t_user
         SET
-        <if test="phone != null">phone = #{phone},</if>
-        <if test="email != null">email = #{email},</if>
-        <if test="gender != null">gender = #{gender},</if>
+        <if test="phone != null">
+            phone = #{phone},
+        </if>
+        <if test="email != null">
+            email = #{email},
+        </if>
+        <if test="gender != null">
+            gender = #{gender},
+        </if>
         modified_user = #{modifiedUser},
         modified_time = #{modifiedTime}
         WHERE
@@ -78,13 +89,15 @@
 		    @Param("modifiedUser") String modifiedUser,
 		    @Param("modifiedTime") Date modifiedTime) -->
     <update id="updateAvatarByUid">
-        UPDATE
-            t_user
-        SET
-            avatar = #{avatar},
-            modified_user = #{modifiedUser},
-            modified_time = #{modifiedTime}
-        WHERE
-            uid = #{uid}
+
+                UPDATE
+                    t_user
+                SET
+                    avatar = #{avatar},
+                    modified_user = #{modifiedUser},
+                    modified_time = #{modifiedTime}
+                WHERE
+                    uid = #{uid}
+
     </update>
 </mapper>

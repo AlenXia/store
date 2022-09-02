@@ -17,13 +17,14 @@ import java.util.List;
 public class AddressServiceImpl implements IAddressService {
     @Autowired
     private AddressMapper addressMapper;
+
     // 在添加用户的收货地址的业务层依赖于IDistrictService的业务层接口
     @Autowired
     private IDistrictService districtService;
 
+    // 地址的最大承载量
     @Value("${user.address.max-count}")
     private int maxCount;
-
 
     @Override
     public void addNewAddress(Integer uid, String username, Address address) {

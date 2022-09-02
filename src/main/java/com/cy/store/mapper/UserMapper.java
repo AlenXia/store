@@ -3,7 +3,6 @@ package com.cy.store.mapper;
 import com.cy.store.entity.User;
 import org.apache.ibatis.annotations.Param;
 
-import javax.xml.crypto.Data;
 import java.util.Date;
 
 //用户模块的持久层接口

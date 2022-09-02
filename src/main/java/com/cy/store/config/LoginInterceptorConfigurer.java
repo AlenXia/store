@@ -11,6 +11,8 @@ import java.util.List;
 
 /**
  * 处理器拦截器的注册
+ * 防止用户没有登录的情况下，访问了没有权限的页面
+ * 将没有权限的页面最后都指向 login.html
  */
 @Configuration
 public class LoginInterceptorConfigurer implements WebMvcConfigurer {
@@ -21,16 +23,18 @@ public class LoginInterceptorConfigurer implements WebMvcConfigurer {
         // 创建自定义的拦截器对象
         HandlerInterceptor interceptor = new LoginInterceptor();
 
-        // 配置白名单：存放在一个List集合中
-        // 白名单
+        /**
+         * 配置白名单：存放在一个List集合中
+         * 白名单
+         */
         List<String> patterns = new ArrayList<String>();
         patterns.add("/bootstrap3/**");
         patterns.add("/css/**");
         patterns.add("/images/**");
         patterns.add("/js/**");
-        patterns.add("/web/register.html");
-        patterns.add("/web/login.html");
-        patterns.add("/web/index.html");
+        patterns.add("/web/register.html");// 注册
+        patterns.add("/web/login.html"); // 登录
+        patterns.add("/web/index.html"); // 主页
         patterns.add("/web/product.html");
         patterns.add("/users/reg");
         patterns.add("/users/login");

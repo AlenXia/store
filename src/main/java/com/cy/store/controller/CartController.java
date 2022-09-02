@@ -1,20 +1,14 @@
 package com.cy.store.controller;
 
-import com.cy.store.entity.Cart;
-import com.cy.store.entity.Product;
 import com.cy.store.service.ICartService;
-import com.cy.store.service.IProductService;
 import com.cy.store.util.JsonResult;
 import com.cy.store.vo.CartVO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.net.ssl.HttpsURLConnection;
 import javax.servlet.http.HttpSession;
-import javax.xml.crypto.Data;
 import java.util.List;
 
 @RestController
