@@ -4,7 +4,9 @@ import com.cy.store.entity.District;
 
 import java.util.List;
 
-/** 处理省/市/区数据的持久层接口 */
+/**
+ * 处理省/市/区数据的持久层接口
+ */
 public interface DistrictMapper {
 
     /**

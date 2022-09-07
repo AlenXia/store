@@ -9,7 +9,6 @@ import java.util.Date;
 public interface UserMapper {
     /**
      * 插入用户的数据
-     *
      * @param user 用户的数据
      * @return 受影响的行数（增删改，都受影响的行数作为返回值）
      */
@@ -17,7 +16,6 @@ public interface UserMapper {
 
     /**
      * 根据用户名来查询用户的数据
-     *
      * @param username 用户名
      * @return 如果找到对应的用户就返回这个用户的数据，否则就用null返回
      */
@@ -37,7 +35,6 @@ public interface UserMapper {
 
     /**
      * 根据用户的id查询用户的数据
-     *
      * @param uid 用户的id
      * @return 如果找到则返回对象，反之则返回null值
      */
@@ -45,7 +42,6 @@ public interface UserMapper {
 
     /**
      * 根据uid更新用户资料
-     *
      * @param user 封装了用户id和新个人资料的对象
      * @return 受影响的行数
      */
